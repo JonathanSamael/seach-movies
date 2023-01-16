@@ -1,22 +1,9 @@
 const API_KEY = '17663513a298b8856d1ed1f52c33e38f';
 const API_BASE = 'https://api.themoviedb.org/3';
 
-/*
-- originais da Netflix
-- recomendados (trending)
-- em alta (top rated)
-- ação
-- comédia
-- aventura
-- terror
-- romance
-- documentários
-*/
-
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${API_BASE}${endpoint}`);
     const json = await req.json();
-    console.log(req);
     return json;
 }
 
@@ -25,7 +12,7 @@ export default {
         return [
             {
                 slug: 'originals',
-                title: 'Originais da Netflix',
+                title: 'Originais',
                 items: await basicFetch(`/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`)
             },
             {
@@ -67,6 +54,25 @@ export default {
                 title: 'Documentários',
                 items: await basicFetch(`/discover/movie?with_genres=99%language=pt-BR&api_key=${API_KEY}`)
             }
-        ]
+        ];
+    },
+    getMovieInfo: async (movieId, type) => {
+        let info = {};
+
+        if(movieId) {
+            switch (type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+                    break;
+                    
+                    case 'tv':
+                        info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+                    break;
+                    default:
+                        info = null;
+                    break;
+            }
+        }
+        return info;
     }
 }
