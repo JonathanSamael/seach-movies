@@ -17,10 +17,10 @@ export default () => {
       let list = await Tmdb.getHomeList();
       setMovieList(list);
 
-      let originals = list.filter(i => i.slug === 'originals');
-      let randonChosen = Math.floor(Math.random() * (originals[0].items.results.length - 1))
-      let chosen = originals[0].items.results[randonChosen]
-      let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
+      let toprated = list.filter(i => i.slug === 'toprated');
+      let randonChosen = Math.floor(Math.random() * (toprated[0].items.results.length - 1))
+      let chosen = toprated[0].items.results[randonChosen]
+      let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'movie');
       console.log(chosen);
       setFeaturedData(chosenInfo)
     }
@@ -61,6 +61,11 @@ export default () => {
 
       </section>
       <Footer />
+      {movieList.length <= 0 &&
+        <div className='loading'>
+          <div className='spinner' />
+        </div>
+      }
     </div>
   )
 }
