@@ -36,3 +36,9 @@ header.black {
     margin-top: 5px;
     border-radius: 3px;
 }
+
+@media (max-width: 450px) {
+    .header--logo img {
+        width: 80%;
+    }
+}

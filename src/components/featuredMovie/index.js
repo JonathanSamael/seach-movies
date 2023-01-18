@@ -11,6 +11,11 @@ export default ({ item }) => {
 
     let backgroundPoster = item.backdrop_path ?? item.poster_path;
 
+    let description = item.overview;
+    if (description.length > 200) {
+        description = description.substring(0, 200) + '...';
+    }
+
     return (
         <section className="featured" style={{
             backgroundSize: 'cover',
@@ -26,7 +31,7 @@ export default ({ item }) => {
                         <div className="featured--seasons">Título original: {item.original_title}
                          </div>
                     </div>
-                    <div className="featured--description">{item.overview}</div>
+                    <div className="featured--description">{description}</div>
                     <div className="featured--buttons">
                         <a className="featured--watchbutton" href={`/watch/${item.id}`}>▶ Assistir</a>
                         <a className="featured--mylistbutton" href={`/watch/add/${item.id}`}>+ Minha Lista</a>

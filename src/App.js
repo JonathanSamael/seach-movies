@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import Tmdb from './Tmdb'
-import MovieRow from './components/movieRow/MovieRow'
-import FeaturedMovie from './components/featuredMovie/FeaturedMovie'
-import Header from './components/header/Header'
-import Footer from './components/footer/Footer'
+import MovieRow from './components/MovieRow'
+import FeaturedMovie from './components/FeaturedMovie'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export default () => {
 
@@ -21,10 +21,8 @@ export default () => {
       let randonChosen = Math.floor(Math.random() * (toprated[0].items.results.length - 1))
       let chosen = toprated[0].items.results[randonChosen]
       let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'movie');
-      console.log(chosen);
       setFeaturedData(chosenInfo)
     }
-
     loadAll();
   }, []);
 
@@ -52,15 +50,15 @@ export default () => {
       {featuredData &&
         <FeaturedMovie item={featuredData} />
       }
-
-
       <section className='lists'>
         {movieList.map((item, key) => (
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
 
       </section>
+
       <Footer />
+
       {movieList.length <= 0 &&
         <div className='loading'>
           <div className='spinner' />
