@@ -1,5 +1,5 @@
 import React from 'react'
-import './Header.css'
+import './styleHeader.css'
 
 const Header = ({black}) => {
     return (
