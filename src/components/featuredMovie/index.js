@@ -1,7 +1,7 @@
 import React from "react";
-import './styleFeaturedMovie.css';
+import './featuredMovie.css';
 
-export default ({ item }) => {
+const FeaturedMovie = ({ item }) => {
 
     let firstDate = new Date(item.release_date);
     let genres = [];
@@ -29,7 +29,7 @@ export default ({ item }) => {
                         <div className="featured--points">{item.vote_average} pontos</div>
                         <div className="featured--year">{firstDate.getFullYear() ?? ''}</div>
                         <div className="featured--seasons">Título original: {item.original_title}
-                         </div>
+                        </div>
                     </div>
                     <div className="featured--description">{description}</div>
                     <div className="featured--buttons">
@@ -42,3 +42,5 @@ export default ({ item }) => {
         </section>
     );
 }
+
+export { FeaturedMovie }

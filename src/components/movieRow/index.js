@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import './styleMovieRow.css';
+import './movieRow.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-export default ({ title, items }) => {
+const MovieRow = ({ title, items }) => {
     const [scrollX, setScrollX] = useState(0);
 
     const handleLeftArrow = () => {
         let moveLineToLeft = scrollX + Math.round(window.innerWidth / 2);
-        if(moveLineToLeft > 0) {
+        if (moveLineToLeft > 0) {
             moveLineToLeft = 0
         }
         setScrollX(moveLineToLeft);
@@ -33,10 +33,10 @@ export default ({ title, items }) => {
                 <NavigateNextIcon style={{ fontSize: 50 }} />
             </div>
             <div className="movieRow--listarea">
-                <div className="movieRow--list" style={{ 
+                <div className="movieRow--list" style={{
                     marginLeft: scrollX,
                     width: items.results.length * 150
-                    }}>
+                }}>
                     {items.results.length > 0 && items.results.map((item, key) => (
                         <div key={key} className="movieRow--item">
                             <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt={item.original_title} />
@@ -49,3 +49,5 @@ export default ({ title, items }) => {
         </div>
     )
 }
+
+export { MovieRow }

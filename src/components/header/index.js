@@ -1,7 +1,7 @@
 import React from 'react'
-import './styleHeader.css'
+import './header.css'
 
-const Header = ({black}) => {
+const Header = ({ black }) => {
     return (
         <header className={black ? 'black' : ''}>
             <div className='header--logo'>
@@ -11,11 +11,11 @@ const Header = ({black}) => {
             </div>
             <div className='header--user'>
                 <a href='/'>
-                    <img src='https://mir-s3-cdn-cf.behance.net/project_modules/disp/e70b1333850498.56ba69ac32ae3.png' alt='logo de perfil do user'/>
+                    <img src='https://mir-s3-cdn-cf.behance.net/project_modules/disp/e70b1333850498.56ba69ac32ae3.png' alt='logo de perfil do user' />
                 </a>
             </div>
         </header>
     )
 }
 
-export default Header
+export { Header }
