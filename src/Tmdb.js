@@ -7,7 +7,7 @@ const basicFetch = async (endpoint) => {
     return json;
 }
 
-export default {
+const TmdbList = {
     getHomeList: async () => {
         return [
             {
@@ -44,7 +44,7 @@ export default {
                 slug: 'horror',
                 title: 'Terror',
                 items: await basicFetch(`/discover/movie?with_genres=27%language=pt-BR&api_key=${API_KEY}`)
-            },{
+            }, {
                 slug: 'romance',
                 title: 'Romance',
                 items: await basicFetch(`/discover/movie?with_genres=10749%language=pt-BR&api_key=${API_KEY}`)
@@ -59,20 +59,22 @@ export default {
     getMovieInfo: async (movieId, type) => {
         let info = {};
 
-        if(movieId) {
+        if (movieId) {
             switch (type) {
                 case 'movie':
                     info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`);
                     break;
-                    
-                    case 'tv':
-                        info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
+
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
                     break;
-                    default:
-                        info = null;
+                default:
+                    info = null;
                     break;
             }
         }
         return info;
     }
 }
+
+export { TmdbList }
