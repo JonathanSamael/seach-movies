@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import './movieRow.css';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const MovieRow = ({ title, items }) => {
     const [scrollX, setScrollX] = useState(0);
@@ -27,10 +25,10 @@ const MovieRow = ({ title, items }) => {
         <div className="movieRow">
             <h2>{title}</h2>
             <div className="movieRow--left" onClick={handleLeftArrow}>
-                <NavigateBeforeIcon style={{ fontSize: 50 }} />
+                <p style={{ fontSize: 30, rotate: '180deg' }}>⨠</p>
             </div>
             <div className="movieRow--right" onClick={handleRightArrow}>
-                <NavigateNextIcon style={{ fontSize: 50 }} />
+                <p style={{ fontSize: 30 }}>⨠</p>
             </div>
             <div className="movieRow--listarea">
                 <div className="movieRow--list" style={{
